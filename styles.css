@@ -770,16 +770,24 @@
 /* Services3 Section */
 /* Services3 Section */
 /* Services3 Section */
-.services3 {
+:root {
+  --card-width: 200px; /* Set the default card width */
+  --card-height: 300px; /* Set the default card height */
+}
+
+.gallery {
   background: #131313;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh; /* Changed height to min-height */
+  min-height: 191vh; /* Maintain full viewport height */
+  overflow-y: auto; /* Enable vertical scrolling */
+  max-height: 80vh; /* Set a max height for scrolling */
+  padding: 1rem; /* Add padding for aesthetics */
 }
 
-.services3 h1 {
+.gallery h1 {
   background-color: #ff8177;
   background-image: linear-gradient(
     to right,
@@ -795,100 +803,89 @@
   -moz-background-clip: text;
   -webkit-text-fill-color: transparent;
   -moz-text-fill-color: transparent;
-  margin-bottom: 5rem;
+  margin-bottom: 2rem;
   font-size: 2.5rem;
-  visibility: hidden; /* Hide the h1 text */
 }
 
-.services3__container {
+.gallery__container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: stretch; /* Ensures cards have equal height */
-  max-width: 1500px; /* Increased max-width for 10 cards per row */
-  margin: 0 auto; /* Center the container horizontally */
+  align-items: flex-start; /* Align cards at the top */
+  max-width: 1500px; /* Set maximum width for the container */
+  margin: 0 auto; /* Center the container */
 }
 
-.services3__card {
-  margin: 1rem;
-  flex: 0 1 calc(10% - 2rem); /* Adjust width for 10 cards per row */
-  border-radius: 4px;
+.gallery__card {
+  width: var(--card-width); /* Use CSS variable for width */
+  height: var(--card-height); /* Use CSS variable for height */
+  margin: 1rem; /* Space between cards */
+  border-radius: 8px; /* Rounded corners */
   background-image: linear-gradient(
       to bottom,
       rgba(0, 0, 0, 0) 0%,
       rgba(17, 17, 17, 0.6) 100%
     ),
-    url('/images/Crochet_home.jpg');
+    url('/images/Crochet_home.jpg'); /* Default background image */
   background-size: cover;
   position: relative;
   color: #fff;
-  display: flex; /* Added */
-  flex-direction: column; /* Added */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* Push content to the bottom */
+  overflow: hidden; /* Hide overflow */
+  transition: transform 0.3s ease; /* Smooth scaling effect */
 }
 
-/* change the images here by targetting children of the main services3 cards */
-.services3__container .services3__card:nth-child(2) {
-  background-image: url('/images/coming__soon.jpg');
+.gallery__card:hover {
+  transform: scale(1.05); /* Scale effect on hover */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Shadow effect */
+  cursor: pointer; /* Pointer cursor */
 }
 
 
-.services3__card:before {
-  opacity: 0.2;
+.gallery__card img {
+  width: 100%; /* Make the image take the full width */
+  height: auto; /* Maintain aspect ratio */
 }
 
-.services3__card h2,
-.services3__card p {
-  visibility: hidden; /* Hide the h2 and p text */
+.gallery__card .caption {
+  visibility: visible; /* Hide the caption text */
 }
 
-.services3__card button {
+.gallery__card button {
   color: #fff;
   padding: 10px 20px;
   border: none;
   outline: none;
   border-radius: 4px;
   background: #f77062;
-  margin-top: auto; /* Added to push button to the bottom */
-  align-self: center; /* Added to center button horizontally */
-  transition: background-color 0.3s ease; /* Added transition for hover effect */
+  margin-top: 0.5rem; /* Space above button */
+  align-self: center; /* Center button */
+  transition: background-color 0.3s ease; /* Smooth background color transition */
 }
 
-.services3__card button:hover {
-  cursor: pointer;
+.gallery__card button:hover {
   background-color: #d5564a; /* Adjusted hover background color */
 }
 
-.services3__card:hover {
-  transform: scale(1.075);
-  color: #4837ff;
-  transition: 0.2s ease-in;
-  cursor: pointer;
-}
-
-@media screen and (max-width: 1500px) {
-  .services3__card {
-    flex: 0 1 calc(10% - 2rem); /* Adjust width for 10 cards per row */
-  }
-}
-
 @media screen and (max-width: 1200px) {
-  .services3__card {
-    flex: 0 1 calc(20% - 2rem); /* Adjust width for 5 cards per row on smaller screens */
+  :root {
+    --card-width: 180px; /* Adjust width for medium screens */
+    --card-height: 250px; /* Adjust height for medium screens */
   }
 }
 
 @media screen and (max-width: 768px) {
-  .services3__card {
-    flex: 0 1 calc(33.333% - 2rem); /* Adjust width for 3 cards per row on smaller screens */
+  :root {
+    --card-width: 150px; /* Adjust width for smaller screens */
+    --card-height: 200px; /* Adjust height for smaller screens */
   }
 }
 
 @media screen and (max-width: 480px) {
-  .services3__card {
-    flex: 0 1 calc(50% - 2rem); /* Adjust width for 2 cards per row on mobile screens */
+  :root {
+    --card-width: 100%; /* Full width for mobile */
+    --card-height: auto; /* Automatic height for mobile */
   }
 }
-
-
-
-
