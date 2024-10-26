@@ -51,7 +51,7 @@
 <!-- Gallery Section -->
 <div class="gallery">
   <h1>Gallery</h1>
-  <div class="gallery__container">
+  <div class="gallery__container" id="galleryContainer">
     <a href="/contact.html" class="gallery__card">
       <img src="images/Crochet_home.jpg" alt="Product 1" />
       <p class="caption">Product 1 - $20</p>
@@ -113,9 +113,8 @@
 
 <script>
   window.onload = function() {
-    const gallery = document.getElementById('gallery');
-    gallery.focus(); // Set focus to the gallery
-    gallery.scrollTop = 0; // Ensure the scroll position is at the top
+    const galleryContainer = document.getElementById('galleryContainer');
+    galleryContainer.scrollTop = 0; // Scroll to the top of the gallery container
   };
 </script>
 
